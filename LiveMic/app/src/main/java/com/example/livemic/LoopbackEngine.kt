@@ -134,9 +134,9 @@ class LoopbackEngine(context: Context) {
         running = false
         worker?.join(500)
         worker = null
-        record?.run { try { stop() } catch (_: Exception) {}; release() }
+        record?.run { try { stop() } catch (e: Exception) {}; release() }
         record = null
-        track?.run { try { pause(); flush(); stop() } catch (_: Exception) {}; release() }
+        track?.run { try { pause(); flush(); stop() } catch (e: Exception) {}; release() }
         track = null
         effects.forEach { it.release() }
         effects.clear()
